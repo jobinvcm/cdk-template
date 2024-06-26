@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  localstack:
+    image: localstack/localstack
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - LAMBDA_RUNTIME_ENVIRONMENT_TIMEOUT=30
+      - LAMBDA_DOCKER_FLAGS=${LAMBDA_DEBUG_FLAG}
+    ports:
+      - "4566:4566"
+      - "4510-4559:4510-4559"
+      - "8080:8080"
